@@ -8,8 +8,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class LD32Game extends Game {
+	public static LD32Game instance;
 	@Override
 	public void create() {
+
+		instance = this;
 		setScreen(new MenuScreen(this));
 	}
 

@@ -22,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
+import hu.afi.ld32.screens.GameScreen;
 
 
 public class MenuScreen implements Screen {
@@ -80,7 +81,7 @@ public class MenuScreen implements Screen {
         playButton.addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
                 //System.out.println("Clicked! Is checked: " + button.isChecked());
-                playButton.setText("Starting new game");
+                LD32Game.instance.setScreen(new GameScreen());
                 //    g.setScreen( new GameScreen());
 
             }

@@ -12,20 +12,20 @@ import com.badlogic.gdx.math.Vector3;
 public class WorldRenderer {
     private World world;
     private OrthographicCamera cam;
-    private int tileSize = 64;
+    private float tileSize = 64f;
     private ShapeRenderer debugRenderer = new ShapeRenderer();
 
     public WorldRenderer(World world){
         this.world = world;
-        cam = new OrthographicCamera(Gdx.graphics.getWidth()/16f, Gdx.graphics.getHeight()/16f);
-        cam.position.set((world.width * tileSize)/2f, (world.height * tileSize)/2f, 0);
+        cam = new OrthographicCamera(Gdx.graphics.getWidth()/tileSize, Gdx.graphics.getHeight()/tileSize);
+        cam.position.set((world.width)/2f, (world.height)/2f, 0);
         cam.update();
 
     }
 
     public void resize(int w, int h){
         Vector3 old = new Vector3(cam.position);
-        cam = new OrthographicCamera(w/16f, h/16f);
+        cam = new OrthographicCamera(w/tileSize, h/tileSize);
         cam.position.set(old);
         cam.update();
     }
