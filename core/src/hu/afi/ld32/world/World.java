@@ -2,6 +2,7 @@ package hu.afi.ld32.world;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.math.Vector2;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -14,9 +15,13 @@ public class World {
     public Tile[][] map;
     public int width;
     public int height;
+    private com.badlogic.gdx.physics.box2d.World phys;
+
 
     public World(String filename){
         FileHandle mapFile = Gdx.files.internal(filename);
+        phys = new com.badlogic.gdx.physics.box2d.World(new Vector2(0,0), true);
+
         try {
             BufferedImage read = ImageIO.read(mapFile.file());
             width = read.getWidth();
@@ -38,5 +43,13 @@ public class World {
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
+    }
+
+    public com.badlogic.gdx.physics.box2d.World getPhys() {
+        return phys;
+    }
+
+    public void update(){
+        phys.step(Gdx.graphics.getDeltaTime(), 6, 2);
     }
 }
