@@ -3,6 +3,9 @@ package hu.afi.ld32.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.Vector2;
+import hu.afi.ld32.entities.Player;
+import hu.afi.ld32.entities.controls.PlayerControl;
 import hu.afi.ld32.utils.MapLoader;
 import hu.afi.ld32.world.EntityHandler;
 import hu.afi.ld32.world.World;
@@ -17,16 +20,18 @@ public class GameScreen implements Screen {
 
     private World world;
     private WorldRenderer renderer;
-    private EntityHandler entityHandler;
     private static GameScreen instance;
 
     public GameScreen(){
         world = new World();
         renderer = new WorldRenderer(world);
-        entityHandler = new EntityHandler(world);
 
         MapLoader loader = new MapLoader();
-        loader.loadMap("testmap.png", world, entityHandler);
+        loader.loadMap("testmap.png", world);
+        Player p = new Player(world,new Vector2(world.width/2f, world.height/2f), 1f,1f, 100);
+        p.setControl(new PlayerControl(renderer));
+        world.handler.setPlayer(p);
+        world.handler.addEntity(p);
         instance = this;
 
     }
@@ -42,9 +47,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(135f/255f,206f/255f,250f/255f,1);
+        Gdx.gl.glClearColor(135f / 255f, 206f / 255f, 250f / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        entityHandler.tick(delta);
+        world.update(delta);
         renderer.render(delta);
     }
 

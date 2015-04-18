@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 import hu.afi.ld32.entities.Entity;
+import hu.afi.ld32.entities.Player;
 import hu.afi.ld32.world.EntityHandler;
 import hu.afi.ld32.world.Tile;
 import hu.afi.ld32.world.World;
@@ -16,11 +17,12 @@ import java.util.ArrayList;
  * Created by zsomkovacs on 2015.04.18..
  */
 public class MapLoader {
-    public void loadMap(String fileName, World world, EntityHandler entityHandler) {
+    public void loadMap(String fileName, World world) {
         FileHandle mapFile = Gdx.files.internal(fileName);
 
         try {
             BufferedImage read = ImageIO.read(mapFile.file());
+            world.handler = new EntityHandler(world);
             world.width = read.getWidth();
             world.height = read.getHeight();
             world.map = new Tile[world.width][world.height];
@@ -37,10 +39,10 @@ public class MapLoader {
                     }
                 }
             }
+
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
 
-        //TODO: Load entities to EntityHandler
     }
 }

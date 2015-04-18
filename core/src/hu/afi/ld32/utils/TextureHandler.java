@@ -1,5 +1,7 @@
 package hu.afi.ld32.utils;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -23,7 +25,9 @@ public final class TextureHandler {
     }
 
     private void init(){
-
+        sprites = new HashMap<String, TextureRegion>();
+        TextureRegion tr = new TextureRegion(new Texture(Gdx.files.internal("player.png")));
+        sprites.put("player", tr);
     }
 
     public TextureRegion getSprite(String name){

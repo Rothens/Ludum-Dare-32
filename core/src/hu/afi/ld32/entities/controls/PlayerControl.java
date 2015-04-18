@@ -20,7 +20,7 @@ public class PlayerControl extends Control{
 
     @Override
     public boolean tick() {
-        if(getControlled() == null) return false;
+        if(getControlled() == null) return true;
 
         if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT)){
             getControlled().accelerate(-5,0);

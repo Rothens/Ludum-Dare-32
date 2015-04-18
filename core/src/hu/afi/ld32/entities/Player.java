@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import hu.afi.ld32.utils.TextureHandler;
 import hu.afi.ld32.world.World;
 
 /**
@@ -27,7 +28,7 @@ public class Player extends LivingEntity{
         PolygonShape ps = new PolygonShape();
         ps.setAsBox(getWidth()/2f, getHeight()/2f);
         body.createFixture(ps, 1f);
-        body.setLinearDamping(0.2f);
+        body.setLinearDamping(2f);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class Player extends LivingEntity{
     @Override
     public boolean tick(float delta) {
         lastMove+=delta;
-        if(lastMove > 1f){
+        if(lastMove > 0.8f){
             body.setLinearVelocity(0,0);
         }
         return super.tick(delta);
@@ -49,6 +50,6 @@ public class Player extends LivingEntity{
 
     @Override
     public TextureRegion getTexture() {
-        return null;
+        return TextureHandler.getInstance().getSprite("player");
     }
 }
