@@ -57,6 +57,12 @@ public abstract class Entity {
         return height;
     }
 
+    /**
+     * Processes the changes for the entity each render cycle
+     * Returns false if the entity should be destroyed - TODO @Rothens: confirm this pls
+     * @param delta
+     * @return boolean
+     */
     public abstract boolean tick(float delta);
 
     public abstract TextureRegion getTexture();

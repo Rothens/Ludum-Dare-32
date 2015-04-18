@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import hu.afi.ld32.entities.Entity;
 
 /**
  * Created by Rothens on 2015.04.18..
@@ -58,8 +59,9 @@ public class WorldRenderer {
 
         batch.begin();
 
-        //TODO: Render entities here. world.entities list
-        //smth like for(Entity e: entities) batch.draw(e.getTexture, e.getLocation().x, e.getLocation().y, e.getWidth(), e.getHeight());
+        for(Entity e : world.entities) {
+            e.render(batch);
+        }
 
         batch.end();
     }

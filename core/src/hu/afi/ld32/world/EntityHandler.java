@@ -22,7 +22,6 @@ public class EntityHandler {
         this.world = world;
         entities = Collections.synchronizedList(new ArrayList<Entity>());
         toAdd = new ArrayList<Entity>();
-
     }
 
     public Entity addEntity(Entity e){
