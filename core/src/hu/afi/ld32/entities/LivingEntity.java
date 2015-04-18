@@ -14,5 +14,7 @@ public abstract class LivingEntity extends Entity {
         previousLocation = location.cpy();
     }
 
+    public abstract void accelerate(float x, float y);
+
 
 }

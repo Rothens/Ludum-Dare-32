@@ -2,7 +2,9 @@ package hu.afi.ld32.entities.controls;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
+import hu.afi.ld32.world.World;
 import hu.afi.ld32.world.WorldRenderer;
 
 /**
@@ -21,10 +23,25 @@ public class PlayerControl extends Control{
         if(getControlled() == null) return false;
 
         if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT)){
-            //getControlled().moveLeft();
+            getControlled().accelerate(-5,0);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT)){
-           //getControlled().moveRight();
+            getControlled().accelerate(5,0);
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.DPAD_UP)){
+            getControlled().accelerate(0,5);
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN)){
+            getControlled().accelerate(0,-5);
+        }
+
+        if(worldRenderer != null){
+            float width = (Gdx.graphics.getWidth()/2f)/ WorldRenderer.tileSize;
+            float height =(Gdx.graphics.getHeight()/2f)/WorldRenderer.tileSize;
+            float x = MathUtils.clamp(getControlled().getLocation().x, width, worldRenderer.getWidth()-width);
+            float y = MathUtils.clamp(getControlled().getLocation().y, height, worldRenderer.getHeight()-height);
+            worldRenderer.getCam().position.set(x,y,0);
+            worldRenderer.getCam().update();
         }
 
         //TODO: cast spells

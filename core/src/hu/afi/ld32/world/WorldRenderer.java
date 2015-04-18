@@ -14,7 +14,7 @@ import com.badlogic.gdx.math.Vector3;
 public class WorldRenderer {
     private World world;
     private OrthographicCamera cam;
-    private float tileSize = 64f;
+    public static float tileSize = 64f;
     private ShapeRenderer debugRenderer = new ShapeRenderer();
     private SpriteBatch batch;
 
@@ -67,6 +67,16 @@ public class WorldRenderer {
 
     public OrthographicCamera getCam() {
         return cam;
+    }
+
+    public int getWidth(){
+        if(world == null) return 0;
+        return world.width;
+    }
+
+    public int getHeight(){
+        if(world == null) return 0;
+        return world.height;
     }
 
     public void setWorld(World world){
