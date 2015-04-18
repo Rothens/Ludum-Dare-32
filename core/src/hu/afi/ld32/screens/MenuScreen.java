@@ -1,4 +1,4 @@
-package hu.afi.ld32;
+package hu.afi.ld32.screens;
 
 /**
  * Created by Robin on 2015.04.18..
@@ -22,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
+import hu.afi.ld32.LD32Game;
 import hu.afi.ld32.screens.GameScreen;
 
 

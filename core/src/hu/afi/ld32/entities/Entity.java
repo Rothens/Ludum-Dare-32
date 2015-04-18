@@ -23,8 +23,6 @@ public abstract class Entity {
 
     }
 
-
-
-    public abstract boolean tick();
+    public abstract boolean tick(float delta);
     public abstract TextureRegion getTexture();
 }
