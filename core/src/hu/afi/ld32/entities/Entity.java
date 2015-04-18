@@ -24,6 +24,36 @@ public abstract class Entity {
     }
 
 
+    /**
+     * Updates the location of the object without setting the body as well.
+     * @param location
+     */
+    protected void updateLocation(Vector2 location){
+        this.location = location;
+    }
+
+    public void setLocation(Vector2 location){
+        this.location = location;
+        if(body != null){
+            body.setTransform(location.cpy().add(width/2, height/2), body.getAngle());
+        }
+    }
+
+    public Vector2 getLocation() {
+        return location;
+    }
+
+    public Body getBody() {
+        return body;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
 
     public abstract boolean tick();
     public abstract TextureRegion getTexture();

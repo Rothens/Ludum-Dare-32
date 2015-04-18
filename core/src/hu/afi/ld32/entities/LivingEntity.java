@@ -7,8 +7,10 @@ import com.badlogic.gdx.math.Vector2;
  */
 public abstract class LivingEntity extends Entity {
     public int health;
+    protected Vector2 previousLocation;
     public LivingEntity(Vector2 location, int health) {
         super(location);
         this.health = health;
+        previousLocation = location.cpy();
     }
 }
