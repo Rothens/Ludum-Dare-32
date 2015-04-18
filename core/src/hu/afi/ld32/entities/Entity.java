@@ -23,7 +23,6 @@ public abstract class Entity {
 
     }
 
-
     /**
      * Updates the location of the object without setting the body as well.
      * @param location
@@ -55,6 +54,7 @@ public abstract class Entity {
         return height;
     }
 
-    public abstract boolean tick();
+    public abstract boolean tick(float delta);
+
     public abstract TextureRegion getTexture();
 }
