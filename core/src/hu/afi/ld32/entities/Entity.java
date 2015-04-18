@@ -1,5 +1,6 @@
 package hu.afi.ld32.entities;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -57,4 +58,12 @@ public abstract class Entity {
     public abstract boolean tick(float delta);
 
     public abstract TextureRegion getTexture();
+
+    /**
+     * Renders the entity's texture by default, override if neccessary
+     * @param batch
+     */
+    public void render(SpriteBatch batch) {
+        batch.draw(getTexture(), location.x, location.y, width, height);
+    }
 }

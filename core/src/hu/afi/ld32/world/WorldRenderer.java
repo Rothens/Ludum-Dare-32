@@ -60,6 +60,7 @@ public class WorldRenderer {
 
         //TODO: Render entities here. world.entities list
         //smth like for(Entity e: entities) batch.draw(e.getTexture, e.getLocation().x, e.getLocation().y, e.getWidth(), e.getHeight());
+
         batch.end();
     }
 
