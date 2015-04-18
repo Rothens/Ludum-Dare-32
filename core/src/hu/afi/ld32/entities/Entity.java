@@ -15,8 +15,10 @@ public abstract class Entity {
     protected float width;
     protected float height;
 
-    public Entity(Vector2 location){
+    public Entity(Vector2 location, float width, float height){
         this.location = location;
+        this.width = width;
+        this.height = height;
         createBody();
     }
 

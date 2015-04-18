@@ -64,6 +64,11 @@ public class WorldRenderer {
         batch.end();
     }
 
+
+    public OrthographicCamera getCam() {
+        return cam;
+    }
+
     public void setWorld(World world){
         this.world = world;
     }
