@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import hu.afi.ld32.world.World;
 
 /**
  * Created by Rothens on 2015.04.18..
@@ -14,12 +15,20 @@ public abstract class Entity {
     protected Body body;
     protected float width;
     protected float height;
+    protected float bodyWidth;
+    protected float bodyHeight;
+    protected World world;
 
-    public Entity(Vector2 location, float width, float height){
+    public Entity(World world, Vector2 location, float width, float height){
         this.location = location;
         this.width = width;
         this.height = height;
+        this.world = world;
         createBody();
+    }
+
+    public World getWorld() {
+        return world;
     }
 
     protected void createBody(){
