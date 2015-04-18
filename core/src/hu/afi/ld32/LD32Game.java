@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+<<<<<<< HEAD
 import hu.afi.ld32.screens.GameScreen;
 
 public class LD32Game extends Game {
@@ -14,4 +15,31 @@ public class LD32Game extends Game {
 	public void create() {
 		setScreen(new GameScreen());
 	}
+=======
+//ApplicationAdapter
+
+public class LD32Game extends Game {
+	@Override
+	public void create() {
+		setScreen(new MenuScreen(this));
+	}
+
+	/*SpriteBatch batch;
+	Texture img;
+
+	@Override
+	public void create () {
+		batch = new SpriteBatch();
+		img = new Texture("badlogic.jpg");
+	}
+
+	@Override
+	public void render () {
+		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		batch.begin();
+		batch.draw(img, 0, 0);
+		batch.end();
+	}*/
+>>>>>>> origin/master
 }
