@@ -3,6 +3,7 @@ package hu.afi.ld32.world;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
@@ -61,9 +62,20 @@ public class WorldRenderer {
         batch.setProjectionMatrix(cam.combined);
         batch.begin();
 
+        for(int i = world.effects.size -1; i >= 0; i--){
+            ParticleEffectPool.PooledEffect effect = world.effects.get(i);
+            effect.draw(batch, delta);
+            if(effect.isComplete()) {
+                effect.free();
+                world.effects.removeIndex(i);
+            }
+        }
+
         for(Entity e : world.handler.getEntities()) {
             e.render(batch);
         }
+
+
 
         batch.end();
         //physRender.render(world.getPhys(), cam.combined); //uncomment for phys debug rendering.

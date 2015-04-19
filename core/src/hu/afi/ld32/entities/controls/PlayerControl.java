@@ -2,8 +2,10 @@ package hu.afi.ld32.entities.controls;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
+import hu.afi.ld32.utils.TextureHandler;
 import hu.afi.ld32.world.World;
 import hu.afi.ld32.world.WorldRenderer;
 
@@ -33,6 +35,12 @@ public class PlayerControl extends Control{
         }
         if(Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN)){
             getControlled().accelerate(0,-5);
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)){
+            System.out.println("1");
+            ParticleEffectPool.PooledEffect effect = TextureHandler.getInstance().domePool.obtain();
+            effect.setPosition(getControlled().getLocation().x + getControlled().getWidth()/2, getControlled().getLocation().y + getControlled().getHeight()/2);
+            getControlled().getWorld().effects.add(effect);
         }
 
         if(worldRenderer != null){

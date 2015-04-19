@@ -2,6 +2,8 @@ package hu.afi.ld32.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -14,6 +16,8 @@ public final class TextureHandler {
     private static TextureHandler instance;
     private TextureAtlas atlas;
     private HashMap<String, TextureRegion> sprites;
+
+    public ParticleEffectPool domePool;
 
     public static TextureHandler getInstance(){
         if(instance == null) instance = new TextureHandler();
@@ -28,6 +32,11 @@ public final class TextureHandler {
         sprites = new HashMap<String, TextureRegion>();
         TextureRegion tr = new TextureRegion(new Texture(Gdx.files.internal("player.png")));
         sprites.put("player", tr);
+        ParticleEffect dome = new ParticleEffect();
+
+        dome.load(Gdx.files.internal("particlez/lightningdome.p"), Gdx.files.internal(""));
+        dome.scaleEffect(0.03f);
+        domePool = new ParticleEffectPool(dome, 1, 3);
     }
 
     public TextureRegion getSprite(String name){
