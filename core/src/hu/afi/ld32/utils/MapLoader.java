@@ -39,6 +39,7 @@ public class MapLoader {
                     }
                 }
             }
+            world.regenPhys();
 
         } catch(Exception e){
             System.out.println(e.getMessage());

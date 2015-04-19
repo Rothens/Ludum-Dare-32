@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import hu.afi.ld32.entities.Entity;
 
 /**
@@ -17,6 +18,7 @@ public class WorldRenderer {
     public static float tileSize = 64f;
     private ShapeRenderer debugRenderer = new ShapeRenderer();
     private SpriteBatch batch;
+    private Box2DDebugRenderer physRender = new Box2DDebugRenderer();
 
     public WorldRenderer(World world){
         this.world = world;
@@ -64,6 +66,8 @@ public class WorldRenderer {
         }
 
         batch.end();
+        //physRender.render(world.getPhys(), cam.combined); //uncomment for phys debug rendering.
+
     }
 
 
