@@ -1,16 +1,19 @@
 package hu.afi.ld32.world;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * Created by Rothens on 2015.04.18..
  */
 public class World {
 
+    public Array<ParticleEffectPool.PooledEffect> effects;
     public Tile[][] map;
     public int width;
     public int height;
@@ -21,6 +24,7 @@ public class World {
     public World(){
         width = 0;
         height = 0;
+        effects = new Array<ParticleEffectPool.PooledEffect>();
     }
 
     public com.badlogic.gdx.physics.box2d.World getPhys() {
