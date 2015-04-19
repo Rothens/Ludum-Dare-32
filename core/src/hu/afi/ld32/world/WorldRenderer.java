@@ -75,8 +75,6 @@ public class WorldRenderer {
             e.render(batch);
         }
 
-
-
         batch.end();
         //physRender.render(world.getPhys(), cam.combined); //uncomment for phys debug rendering.
 

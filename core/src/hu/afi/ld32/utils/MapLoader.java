@@ -5,6 +5,9 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 import hu.afi.ld32.entities.Entity;
 import hu.afi.ld32.entities.Player;
+import hu.afi.ld32.entities.statics.StoneEntity;
+import hu.afi.ld32.entities.statics.TreeEntity;
+import hu.afi.ld32.entities.statics.WallEntity;
 import hu.afi.ld32.world.EntityHandler;
 import hu.afi.ld32.world.Tile;
 import hu.afi.ld32.world.World;
@@ -40,6 +43,18 @@ public class MapLoader {
                 }
             }
             world.regenPhys();
+
+            for (int x=0; x<11; x++) {
+                WallEntity wallEntity = new WallEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 4), 1f, 1f);
+                world.handler.addEntity(wallEntity);
+                if (x%2 == 0) {
+                    TreeEntity treeEntity = new TreeEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 5), 1f, 1f);
+                    world.handler.addEntity(treeEntity);
+                } else {
+                    StoneEntity stoneEntity = new StoneEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 5), 1f, 1f);
+                    world.handler.addEntity(stoneEntity);
+                }
+            }
 
         } catch(Exception e){
             System.out.println(e.getMessage());
