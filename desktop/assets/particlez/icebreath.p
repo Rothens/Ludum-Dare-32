@@ -2,8 +2,8 @@ Untitled
 - Delay -
 active: false
 - Duration - 
-lowMin: 3000.0
-lowMax: 3000.0
+lowMin: 2000.0
+lowMax: 2000.0
 - Count - 
 min: 0
 max: 300
@@ -98,18 +98,7 @@ timeline0: 0.0
 timeline1: 0.999
 timeline2: 1.0
 - Rotation - 
-active: true
-lowMin: 1.0
-lowMax: 360.0
-highMin: 180.0
-highMax: 180.0
-relative: true
-scalingCount: 2
-scaling0: 0.0
-scaling1: 1.0
-timelineCount: 2
-timeline0: 0.0
-timeline1: 1.0
+active: false
 - Wind - 
 active: false
 - Gravity - 
@@ -138,9 +127,9 @@ timeline1: 0.01369863
 timeline2: 0.65068495
 timeline3: 1.0
 - Options - 
-attached: true
-continuous: true
-aligned: true
+attached: false
+continuous: false
+aligned: false
 additive: false
 behind: false
 premultipliedAlpha: false
@@ -277,9 +266,9 @@ timeline1: 0.006849315
 timeline2: 0.74657536
 timeline3: 1.0
 - Options - 
-attached: true
-continuous: true
-aligned: true
+attached: false
+continuous: false
+aligned: false
 additive: false
 behind: false
 premultipliedAlpha: false
