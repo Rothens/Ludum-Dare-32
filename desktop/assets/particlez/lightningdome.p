@@ -2,8 +2,8 @@ Untitled
 - Delay -
 active: false
 - Duration - 
-lowMin: 5000.0
-lowMax: 5000.0
+lowMin: 500.0
+lowMax: 500.0
 - Count - 
 min: 250
 max: 250
@@ -34,7 +34,16 @@ timeline0: 0.0
 timeline1: 0.001
 timeline2: 1.0
 - Life Offset - 
-active: false
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 0.0
+relative: true
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
 - X Offset - 
 active: false
 - Y Offset - 
@@ -138,9 +147,9 @@ timeline1: 0.001
 timeline2: 0.999
 timeline3: 1.0
 - Options - 
-attached: true
+attached: false
 continuous: false
-aligned: true
+aligned: false
 additive: false
 behind: false
 premultipliedAlpha: false
@@ -152,8 +161,8 @@ Untitled
 - Delay -
 active: false
 - Duration - 
-lowMin: 5000.0
-lowMax: 5000.0
+lowMin: 500.0
+lowMax: 500.0
 - Count - 
 min: 250
 max: 250
@@ -184,7 +193,16 @@ timeline0: 0.0
 timeline1: 0.001
 timeline2: 1.0
 - Life Offset - 
-active: false
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 0.0
+relative: true
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
 - X Offset - 
 active: false
 - Y Offset - 
@@ -288,9 +306,9 @@ timeline1: 0.001
 timeline2: 0.999
 timeline3: 1.0
 - Options - 
-attached: true
+attached: false
 continuous: false
-aligned: true
+aligned: false
 additive: false
 behind: false
 premultipliedAlpha: false
