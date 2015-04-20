@@ -27,6 +27,7 @@ public final class TextureHandler {
 
     public ParticleEffectPool domePool;
     public ParticleEffectPool breathPool;
+    public ParticleEffectPool boltPool;
 
     public static TextureHandler getInstance(){
         if(instance == null) instance = new TextureHandler();
@@ -57,12 +58,15 @@ public final class TextureHandler {
         eh = charAtlas.findRegions("eh");
         ParticleEffect dome = new ParticleEffect();
         ParticleEffect breath = new ParticleEffect();
+        ParticleEffect bolt = new ParticleEffect();
         tr = new TextureRegion(new Texture(Gdx.files.internal("textures/wall.png")));
         sprites.put("entity_wall", tr);
         tr = new TextureRegion(new Texture(Gdx.files.internal("textures/tree.png")));
         sprites.put("entity_tree", tr);
         tr = new TextureRegion(new Texture(Gdx.files.internal("textures/stone.png")));
         sprites.put("entity_stone", tr);
+        tr = new TextureRegion(new Texture(Gdx.files.internal("textures/fireball.png")));
+        sprites.put("entity_fireball", tr);
 
         dome.load(Gdx.files.internal("particlez/lightningdome.p"), Gdx.files.internal(""));
         dome.scaleEffect(0.03f);
@@ -71,6 +75,10 @@ public final class TextureHandler {
         breath.load(Gdx.files.internal("particlez/icebreath.p"), Gdx.files.internal(""));
         breath.scaleEffect(0.03f);
         breathPool = new ParticleEffectPool(breath, 1, 10);
+
+        bolt.load(Gdx.files.internal("particlez/fireball.p"), Gdx.files.internal(""));
+        bolt.scaleEffect(0.03f);
+        boltPool = new ParticleEffectPool(bolt, 1, 10);
     }
 
     public TextureAtlas.AtlasRegion getMain(int i){

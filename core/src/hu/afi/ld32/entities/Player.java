@@ -3,10 +3,7 @@ package hu.afi.ld32.entities;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.*;
 import hu.afi.ld32.utils.AnimUtil;
 import hu.afi.ld32.utils.TextureHandler;
 import hu.afi.ld32.world.World;
@@ -35,7 +32,11 @@ public class Player extends LivingEntity{
         CircleShape ps = new CircleShape();
         //ps.setAsBox(getWidth()/2f, getHeight()/2f);
         ps.setRadius(bodyWidth/2f);
-        body.createFixture(ps, 1f);
+        Fixture f = body.createFixture(ps, 1f);
+        Filter filt = new Filter();
+        filt.categoryBits = (short)1;
+        filt.maskBits = (short)~1;
+        f.setFilterData(filt);
         body.setLinearDamping(2f);
     }
 

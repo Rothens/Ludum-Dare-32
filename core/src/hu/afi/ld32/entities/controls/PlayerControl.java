@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g3d.particles.emitters.Emitter;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
+import hu.afi.ld32.entities.Fireball;
 import hu.afi.ld32.utils.TextureHandler;
 import hu.afi.ld32.world.World;
 import hu.afi.ld32.world.WorldRenderer;
@@ -56,6 +57,16 @@ public class PlayerControl extends Control{
 
             }
             getControlled().getWorld().effects.add(effect);
+        }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_3)){
+            ParticleEffectPool.PooledEffect effect = TextureHandler.getInstance().boltPool.obtain();
+            effect.setPosition(getControlled().getLocation().x + getControlled().getWidth()/2, getControlled().getLocation().y + getControlled().getHeight()/2);
+            //getControlled().getWorld().effects.add(effect);
+
+            Fireball fb = new Fireball(getControlled().getWorld(), getControlled().getBody().getPosition(), 200);
+            fb.setDirection(angle);
+            getControlled().getWorld().handler.addEntity(fb);
         }
 
         if(worldRenderer != null){
