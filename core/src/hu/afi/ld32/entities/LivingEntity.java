@@ -34,6 +34,11 @@ public abstract class LivingEntity extends Entity {
         this.control.setControlled(this);
     }
 
+    public void setRotation(float rotation) {
+        this.rotation = rotation;
+        this.body.setTransform(this.body.getPosition(), rotation/360.0f*2.0f*3.1415927f);
+    }
+
     @Override
     public boolean tick(float delta) {
         previousLocation = getLocation().cpy();

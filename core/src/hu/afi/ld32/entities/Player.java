@@ -22,15 +22,24 @@ public class Player extends LivingEntity{
 
     @Override
     protected void createBody() {
-        bodyDiffY = 0.3f;
-        bodyWidth = 1f;
         BodyDef bd = new BodyDef();
+        bodyDiffY = 0.425f;
         bd.type = BodyDef.BodyType.DynamicBody;
         bd.position.set(getLocation().cpy().add(bodyDiffX, bodyDiffY));
         body = getWorld().getPhys().createBody(bd);
         body.setFixedRotation(true);
-        CircleShape ps = new CircleShape();
-        ps.setRadius(bodyWidth/2f);
+        PolygonShape ps = new PolygonShape();
+        Vector2[] vertices = {
+                new Vector2(-0.5f, -0.5f),
+                new Vector2(-0.55f, 0.5f),
+                new Vector2(-0.2f, 1.35f),
+                new Vector2(-0.15f, 1.35f),
+                new Vector2(0.15f, 1.35f),
+                new Vector2(0.2f, 1.35f),
+                new Vector2(0.55f, 0.5f),
+                new Vector2(0.5f, -0.5f)
+        };
+        ps.set(vertices);
         Fixture f = body.createFixture(ps, 1f);
         f.setDensity(1);
         f.setRestitution(0);
