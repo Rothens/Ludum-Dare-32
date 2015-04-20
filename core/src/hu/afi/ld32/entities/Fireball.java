@@ -18,6 +18,9 @@ public class Fireball extends LivingEntity {
 
     public Fireball(World world, Vector2 location, int health) {
         super(world, location, .5f, .5f, health);
+        this.fireVulnerability = 0.0f;
+        this.frostVulnerability = 5.0f;
+        this.lightningVulnerability = 0.0f;
         effect = TextureHandler.getInstance().boltPool.obtain();
         effect.setPosition(getLocation().x + getWidth()/2, getLocation().y + getHeight()/2);
         getWorld().effects.add(effect);

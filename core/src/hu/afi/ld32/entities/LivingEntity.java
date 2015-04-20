@@ -13,6 +13,9 @@ public abstract class LivingEntity extends Entity {
     protected Control control;
     protected Vector2 previousLocation;
     public float rotation = 0f;
+    public float fireVulnerability = 1.0f;
+    public float frostVulnerability = 1.0f;
+    public float lightningVulnerability = 1.0f;
 
     public LivingEntity(World world, Vector2 location, float width, float height, int health) {
         super(world, location, width, height);

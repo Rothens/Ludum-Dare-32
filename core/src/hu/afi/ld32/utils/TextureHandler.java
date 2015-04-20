@@ -65,6 +65,8 @@ public final class TextureHandler {
         sprites.put("entity_tree", tr);
         tr = new TextureRegion(new Texture(Gdx.files.internal("textures/stone.png")));
         sprites.put("entity_stone", tr);
+        tr = new TextureRegion(new Texture(Gdx.files.internal("textures/AR.png")));
+        sprites.put("entity_ar", tr);
         tr = new TextureRegion(new Texture(Gdx.files.internal("textures/fireball.png")));
         sprites.put("entity_fireball", tr);
 

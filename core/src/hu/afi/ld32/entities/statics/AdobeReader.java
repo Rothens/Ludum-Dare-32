@@ -2,7 +2,10 @@ package hu.afi.ld32.entities.statics;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.Filter;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import hu.afi.ld32.entities.StaticEntity;
 import hu.afi.ld32.utils.TextureHandler;
 import hu.afi.ld32.world.World;
@@ -10,9 +13,9 @@ import hu.afi.ld32.world.World;
 /**
  * Created by zsomkovacs on 2015.04.18..
  */
-public class WallEntity extends StaticEntity {
+public class AdobeReader extends StaticEntity {
 
-    public WallEntity(World world, Vector2 location, float width, float height) {
+    public AdobeReader(World world, Vector2 location, float width, float height) {
         super(world, location, width, height);
     }
 
@@ -33,7 +36,7 @@ public class WallEntity extends StaticEntity {
         body.setBullet(true);
 
         PolygonShape ps = new PolygonShape();
-        ps.setAsBox(bodyWidth, bodyHeight/2);
+        ps.setAsBox(bodyWidth/2, bodyHeight/2);
         Fixture f = body.createFixture(ps, 1f);
         Filter filt = new Filter();
         filt.categoryBits = (short)1;
@@ -42,6 +45,6 @@ public class WallEntity extends StaticEntity {
     }
 
     public TextureRegion getTexture() {
-        return TextureHandler.getInstance().getSprite("entity_wall");
+        return TextureHandler.getInstance().getSprite("entity_ar");
     }
 }
