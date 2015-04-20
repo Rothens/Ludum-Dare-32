@@ -1,34 +1,34 @@
-package hu.afi.ld32.entities;
+package hu.afi.ld32.entities.spells;
 
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.Filter;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import hu.afi.ld32.entities.SpellEntity;
+import hu.afi.ld32.spell.SpellFactory;
 import hu.afi.ld32.utils.TextureHandler;
 import hu.afi.ld32.world.World;
 
 /**
  * Created by Rothens on 2015.04.20..
  */
-public class Fireball extends LivingEntity {
+public class Fireball extends SpellEntity {
     private ParticleEffectPool.PooledEffect effect;
 
-    public Fireball(World world, Vector2 location, int health) {
-        super(world, location, .5f, .5f, health);
-        this.fireVulnerability = 0.0f;
-        this.frostVulnerability = 5.0f;
-        this.lightningVulnerability = 0.0f;
+    public Fireball(World world, Vector2 location) {
+        super(world, location, .5f, .5f);
         effect = TextureHandler.getInstance().boltPool.obtain();
-        effect.setPosition(getLocation().x + getWidth()/2, getLocation().y + getHeight()/2);
+        effect.setPosition(getLocation().x + getWidth() / 2, getLocation().y + getHeight() / 2);
         getWorld().effects.add(effect);
         this.type = "FIREBALL";
+        SpellFactory sf = new SpellFactory();
+        this.spell = sf.createSpell(SpellFactory.SpellName.FIREBOLT);
     }
 
     public void setDirection(float dir){
-        Vector2 accel = new Vector2(10f,0f);
+        Vector2 accel = new Vector2(10f, 0f);
         accel.rotate(dir);
         if(body != null){
             body.setLinearVelocity(accel);
@@ -45,12 +45,8 @@ public class Fireball extends LivingEntity {
         body.setFixedRotation(true);
         body.setBullet(true);
         CircleShape ps = new CircleShape();
-        ps.setRadius(bodyWidth/2f);
+        ps.setRadius(bodyWidth / 2f);
         Fixture f = body.createFixture(ps, 1f);
-        Filter filt = new Filter();
-        filt.categoryBits = (short)1;
-        filt.maskBits = (short)~1;
-        f.setFilterData(filt);
     }
 
     @Override
@@ -62,14 +58,7 @@ public class Fireball extends LivingEntity {
     public boolean tick(float delta) {
         super.tick(delta);
         effect.setPosition(getLocation().x, getLocation().y);
-        health -= delta;
-        if(health <= 0){
-            effect.allowCompletion();
-            if(body != null) {
-                getWorld().getPhys().destroyBody(body);
-            }
-        }
-        return health > 0;
+        return true;
     }
 
     @Override

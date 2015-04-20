@@ -1,22 +1,22 @@
 package hu.afi.ld32.entities.controls;
 
-import hu.afi.ld32.entities.LivingEntity;
+import hu.afi.ld32.entities.DynamicEntity;
 
 /**
  * Created by Rothens on 2015.04.18..
  */
 public abstract class Control {
-    private LivingEntity controlled;
+    private DynamicEntity controlled;
 
     public Control(){
 
     }
 
-    public LivingEntity getControlled() {
+    public DynamicEntity getControlled() {
         return controlled;
     }
 
-    public void setControlled(LivingEntity controlled){
+    public void setControlled(DynamicEntity controlled){
         this.controlled = controlled;
     }
 

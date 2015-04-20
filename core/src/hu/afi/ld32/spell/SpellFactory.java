@@ -34,23 +34,23 @@ public class SpellFactory {
 
     double[] electricityFieldStunDuration = {1,1.2,1.4,1.8,2,2.2,2.4,2.6,2,8,3};
 
-    public AbstractSpell createSpell(SpellName spellName) {
-        AbstractSpell spell = null;
+    public Spell createSpell(SpellName spellName) {
+        Spell spell = null;
         if (spellName == SpellName.FIREBOLT) {
-            spell = new AbstractSpell(fireboltName, basicFailRate, fireBoltDamage, basicCost, fireBoltRange,
+            spell = new Spell(fireboltName, basicFailRate, fireBoltDamage, basicCost, fireBoltRange,
                     nullArray, nullArray, fireBoltBurnRate, nullArray,
-                    AbstractSpell.SpellElement.FIRE, AbstractSpell.SpellType.PROJECTILE, true);
+                    Spell.SpellElement.FIRE, Spell.SpellType.PROJECTILE, true);
         }
         else if (spellName == SpellName.CONEOFCOLD) {
-            spell = new AbstractSpell(coneOfColdName, basicFailRate, coneOfColdDamage, basicCost, coneOfColdRange,
+            spell = new Spell(coneOfColdName, basicFailRate, coneOfColdDamage, basicCost, coneOfColdRange,
                     coneOfColdSlowRate, coneOfColdSlowDuration, 0, nullArray,
-                    AbstractSpell.SpellElement.COLD, AbstractSpell.SpellType.CONE, true);
+                    Spell.SpellElement.COLD, Spell.SpellType.CONE, true);
         }
 
         if (spellName == SpellName.ELECTRICITYFIELD) {
-            spell = new AbstractSpell(electricityFieldName, basicFailRate, electricityFieldDamage, basicCost, electricityFieldRange,
+            spell = new Spell(electricityFieldName, basicFailRate, electricityFieldDamage, basicCost, electricityFieldRange,
                     nullArray, nullArray, 0, electricityFieldStunDuration,
-                    AbstractSpell.SpellElement.LIGHTNING, AbstractSpell.SpellType.NOVA, true);
+                    Spell.SpellElement.LIGHTNING, Spell.SpellType.NOVA, true);
         }
 
         return spell;

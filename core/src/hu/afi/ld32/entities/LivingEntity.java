@@ -8,11 +8,8 @@ import hu.afi.ld32.world.World;
 /**
  * Created by Rothens on 2015.04.18..
  */
-public abstract class LivingEntity extends Entity {
+public abstract class LivingEntity extends DynamicEntity {
     public int health;
-    protected Control control;
-    protected Vector2 previousLocation;
-    public float rotation = 0f;
     public float fireVulnerability = 1.0f;
     public float frostVulnerability = 1.0f;
     public float lightningVulnerability = 1.0f;
@@ -20,36 +17,5 @@ public abstract class LivingEntity extends Entity {
     public LivingEntity(World world, Vector2 location, float width, float height, int health) {
         super(world, location, width, height);
         this.health = health;
-        previousLocation = location.cpy();
     }
-
-    public abstract void accelerate(float x, float y);
-
-    public Control getControl() {
-        return control;
-    }
-
-    public void setControl(Control control) {
-        this.control = control;
-        this.control.setControlled(this);
-    }
-
-    public void setRotation(float rotation) {
-        this.rotation = rotation;
-        this.body.setTransform(this.body.getPosition(), rotation/360.0f*2.0f*3.1415927f);
-    }
-
-    @Override
-    public boolean tick(float delta) {
-        previousLocation = getLocation().cpy();
-        updateLocation(getBody().getPosition().cpy().add(-(bodyDiffX), -(bodyDiffY)));
-
-        return control == null || control.tick();
-    }
-
-    public Vector2 getPreviousLocation() {
-        return previousLocation;
-    }
-
-
 }

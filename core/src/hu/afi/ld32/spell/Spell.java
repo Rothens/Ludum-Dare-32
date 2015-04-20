@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by zsomkovacs on 2015.04.18..
  */
-public class AbstractSpell {
+public class Spell {
     public enum SpellElement {FIRE, COLD, LIGHTNING}
     public enum SpellType {PROJECTILE, CONE, NOVA, SPECIAL}
 
@@ -64,9 +64,9 @@ public class AbstractSpell {
     protected boolean canLevel = true; // is it a 10-leveled spell, or not.
     protected double swayDirection = 0; // projetile-hoz; szögben megadva az eltérés mértéke.
 
-    public AbstractSpell(String displayedName, double[] failRate, int[] damage, int[] cost, double[] range,
-                         double[] slowRate, double[] slowDuration, double burnRate, double[] stunDuration,
-                         SpellElement element, SpellType type, boolean canLevel) {
+    public Spell(String displayedName, double[] failRate, int[] damage, int[] cost, double[] range,
+                 double[] slowRate, double[] slowDuration, double burnRate, double[] stunDuration,
+                 SpellElement element, SpellType type, boolean canLevel) {
         this.displayedName = displayedName;
         this.failRate = failRate;
         this.damage = damage;
@@ -104,8 +104,8 @@ public class AbstractSpell {
         return rand.nextDouble() < failRate[level];
     }
 
-    public AbstractSpell cast() {
-        AbstractSpell spell = this;
+    public Spell cast() {
+        Spell spell = this;
         if (isFailing()) {
             spell.fail();
         }
