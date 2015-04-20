@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import hu.afi.ld32.entities.SpellEntity;
 import hu.afi.ld32.spell.SpellFactory;
+import hu.afi.ld32.utils.FilterUtil;
 import hu.afi.ld32.utils.TextureHandler;
 import hu.afi.ld32.world.World;
 
@@ -16,7 +17,7 @@ import hu.afi.ld32.world.World;
  */
 public class Fireball extends SpellEntity {
     private ParticleEffectPool.PooledEffect effect;
-    private float life = 20f;
+    private float life = 4f;
 
     public Fireball(World world, Vector2 location) {
         super(world, location, .5f, .5f);
@@ -48,6 +49,12 @@ public class Fireball extends SpellEntity {
         CircleShape ps = new CircleShape();
         ps.setRadius(bodyWidth / 2f);
         Fixture f = body.createFixture(ps, 1f);
+        f.setFilterData(FilterUtil.PLAYERFILTER);
+    }
+
+    @Override
+    public void onCollision() {
+        life = 0f;
     }
 
     @Override

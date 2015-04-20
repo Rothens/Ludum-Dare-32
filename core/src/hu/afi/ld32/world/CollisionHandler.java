@@ -14,8 +14,10 @@ public class CollisionHandler implements ContactListener {
     public void beginContact(Contact contact) {
         Entity e1 = (Entity) contact.getFixtureA().getUserData();
         Entity e2 = (Entity) contact.getFixtureB().getUserData();
-        System.out.println(e1.getType());
-        System.out.println(e2.getType());
+        if(e1 != null)
+        e1.onCollision();
+        if(e2 != null)
+        e2.onCollision();
     }
 
     @Override

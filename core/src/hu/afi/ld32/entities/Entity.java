@@ -46,6 +46,10 @@ public abstract class Entity {
         return type;
     }
 
+    public void onCollision(){
+
+    }
+
     /**
      * Updates the location of the object without setting the body as well.
      * @param location

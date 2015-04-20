@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.Filter;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import hu.afi.ld32.entities.StaticEntity;
+import hu.afi.ld32.utils.FilterUtil;
 import hu.afi.ld32.utils.TextureHandler;
 import hu.afi.ld32.world.World;
 
@@ -41,6 +42,7 @@ public class AdobeReader extends StaticEntity {
         Fixture f = body.createFixture(ps, 1f);
         f.setDensity(1);
         f.setRestitution(0);
+        f.setFilterData(FilterUtil.ENVFILTER);
     }
 
     public TextureRegion getTexture() {

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import hu.afi.ld32.utils.AnimUtil;
+import hu.afi.ld32.utils.FilterUtil;
 import hu.afi.ld32.utils.TextureHandler;
 import hu.afi.ld32.world.World;
 
@@ -42,6 +43,7 @@ public class Player extends LivingEntity{
         Fixture f = body.createFixture(ps, 1f);
         f.setDensity(1);
         f.setRestitution(0);
+        f.setFilterData(FilterUtil.PLAYERFILTER);
         body.setLinearDamping(2f);
         this.type = "PLAYER";
     }
