@@ -38,10 +38,8 @@ public class AdobeReader extends StaticEntity {
         PolygonShape ps = new PolygonShape();
         ps.setAsBox(bodyWidth/2, bodyHeight/2);
         Fixture f = body.createFixture(ps, 1f);
-        Filter filt = new Filter();
-        filt.categoryBits = (short)1;
-        filt.maskBits = (short)~1;
-        f.setFilterData(filt);
+        f.setDensity(1);
+        f.setRestitution(0);
     }
 
     public TextureRegion getTexture() {

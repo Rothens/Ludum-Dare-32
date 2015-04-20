@@ -30,7 +30,7 @@ public class PlayerControl extends Control{
     public boolean tick() {
         if(getControlled() == null) return true;
         float angle = getAngle(getUnprojected());
-        getControlled().rotation = angle -90;
+        getControlled().setRotation(angle - 90);
 
 
         if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT)){
