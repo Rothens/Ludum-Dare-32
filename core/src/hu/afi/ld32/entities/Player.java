@@ -25,8 +25,8 @@ public class Player extends LivingEntity{
 
     @Override
     protected void createBody() {
-        bodyDiffY = 0.01f;
-        bodyWidth = 0.5f;
+        bodyDiffY = 0.3f;
+        bodyWidth = 1f;
         BodyDef bd = new BodyDef();
         bd.type = BodyDef.BodyType.DynamicBody;
         bd.position.set(getLocation().cpy().add(bodyDiffX, bodyDiffY));

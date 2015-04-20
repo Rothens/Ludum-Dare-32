@@ -34,7 +34,7 @@ public abstract class LivingEntity extends Entity {
     @Override
     public boolean tick(float delta) {
         previousLocation = getLocation().cpy();
-        updateLocation(getBody().getPosition().cpy().add(-(getWidth() / 2), -(getHeight() /2)));
+        updateLocation(getBody().getPosition().cpy().add(-(bodyDiffX), -(bodyDiffY)));
 
         return control == null || control.tick();
     }

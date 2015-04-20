@@ -23,6 +23,7 @@ public class GameScreen implements Screen {
     private static GameScreen instance;
 
     public GameScreen(){
+        Gdx.input.setInputProcessor(null);
         world = new World();
         renderer = new WorldRenderer(world);
 

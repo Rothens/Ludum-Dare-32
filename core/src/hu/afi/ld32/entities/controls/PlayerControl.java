@@ -28,6 +28,7 @@ public class PlayerControl extends Control{
         float angle = getAngle(getUnprojected());
         getControlled().rotation = angle -90;
 
+
         if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT)){
             getControlled().accelerate(-5,0);
         }
@@ -60,8 +61,8 @@ public class PlayerControl extends Control{
         if(worldRenderer != null){
             float width = (Gdx.graphics.getWidth()/2f)/ WorldRenderer.tileSize;
             float height =(Gdx.graphics.getHeight()/2f)/WorldRenderer.tileSize;
-            float x = MathUtils.clamp(getControlled().getLocation().x, width, worldRenderer.getWidth()-width);
-            float y = MathUtils.clamp(getControlled().getLocation().y, height, worldRenderer.getHeight()-height);
+            float x = MathUtils.clamp(getControlled().getPreviousLocation().x + getControlled().getWidth(), width, worldRenderer.getWidth()-width);
+            float y = MathUtils.clamp(getControlled().getPreviousLocation().y + getControlled().getHeight(), height, worldRenderer.getHeight()-height);
             worldRenderer.getCam().position.set(x,y,0);
             worldRenderer.getCam().update();
         }
