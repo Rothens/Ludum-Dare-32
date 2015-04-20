@@ -28,7 +28,7 @@ public class GameScreen implements Screen {
 
         MapLoader loader = new MapLoader();
         loader.loadMap("testmap.png", world);
-        Player p = new Player(world,new Vector2(world.width/2f, world.height/2f), 1f,1f, 100);
+        Player p = new Player(world,new Vector2(world.width/2f, world.height/2f), 100);
         p.setControl(new PlayerControl(renderer));
         world.handler.setPlayer(p);
         world.handler.addEntity(p);

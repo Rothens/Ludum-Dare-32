@@ -5,6 +5,19 @@ package hu.afi.ld32.world;
  */
 public enum Tile {
     GRASS,
-    DIRT,
-    SAND
+    ROCK,
+    SAND;
+    private final String texture;
+
+    private Tile(String texture){
+        this.texture = texture;
+    }
+
+    private Tile(){
+        this.texture = this.name().toLowerCase();
+    }
+
+    public String getTexture() {
+        return texture;
+    }
 }

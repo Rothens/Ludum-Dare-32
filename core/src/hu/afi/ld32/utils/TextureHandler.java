@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
 
 import java.util.HashMap;
 
@@ -14,8 +15,15 @@ import java.util.HashMap;
  */
 public final class TextureHandler {
     private static TextureHandler instance;
-    private TextureAtlas atlas;
+    private TextureAtlas tileAtlas;
+    private TextureAtlas charAtlas;
     private HashMap<String, TextureRegion> sprites;
+    private Array<TextureAtlas.AtlasRegion> main;
+    private Array<TextureAtlas.AtlasRegion> ee;
+    private Array<TextureAtlas.AtlasRegion> em;
+    private Array<TextureAtlas.AtlasRegion> eh;
+
+
 
     public ParticleEffectPool domePool;
     public ParticleEffectPool breathPool;
@@ -30,10 +38,23 @@ public final class TextureHandler {
     }
 
     private void init(){
+        tileAtlas = new TextureAtlas(Gdx.files.internal("textures/tiles.atlas"));
+        charAtlas = new TextureAtlas(Gdx.files.internal("textures/chars.atlas"));
         sprites = new HashMap<String, TextureRegion>();
 
         TextureRegion tr = new TextureRegion(new Texture(Gdx.files.internal("player.png")));
         sprites.put("player", tr);
+        sprites.put("bushes", tileAtlas.findRegion("bushes"));
+        sprites.put("grass", tileAtlas.findRegion("grass"));
+        sprites.put("road", tileAtlas.findRegion("road"));
+        sprites.put("rock", tileAtlas.findRegion("rock"));
+        sprites.put("sand", tileAtlas.findRegion("sand"));
+        sprites.put("wood", tileAtlas.findRegion("wood"));
+
+        main = charAtlas.findRegions("main");
+        ee = charAtlas.findRegions("ee");
+        em = charAtlas.findRegions("em");
+        eh = charAtlas.findRegions("eh");
         ParticleEffect dome = new ParticleEffect();
         ParticleEffect breath = new ParticleEffect();
         tr = new TextureRegion(new Texture(Gdx.files.internal("textures/wall.png")));
@@ -51,6 +72,22 @@ public final class TextureHandler {
         breath.scaleEffect(0.03f);
         breathPool = new ParticleEffectPool(breath, 1, 10);
     }
+
+    public TextureAtlas.AtlasRegion getMain(int i){
+        return main.get(i);
+    }
+
+    public TextureAtlas.AtlasRegion getEe(int i){
+        return ee.get(i);
+    }
+
+    public TextureAtlas.AtlasRegion getEm(int i){
+        return em.get(i);
+    }
+    public TextureAtlas.AtlasRegion getEh(int i){
+        return eh.get(i);
+    }
+
 
     public TextureRegion getSprite(String name){
         return sprites.get(name.toLowerCase());

@@ -10,8 +10,8 @@ import hu.afi.ld32.world.World;
  * Created by zsomkovacs on 2015.04.18..
  */
 public class TreeEntity extends StaticEntity {
-    public TreeEntity(World world, Vector2 location, float width, float height) {
-        super(world, location, width, height);
+    public TreeEntity(World world, Vector2 location) {
+        super(world, location, 2f,2f);
     }
 
     @Override

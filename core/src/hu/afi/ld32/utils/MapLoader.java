@@ -3,8 +3,6 @@ package hu.afi.ld32.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
-import hu.afi.ld32.entities.Entity;
-import hu.afi.ld32.entities.Player;
 import hu.afi.ld32.entities.statics.StoneEntity;
 import hu.afi.ld32.entities.statics.TreeEntity;
 import hu.afi.ld32.entities.statics.WallEntity;
@@ -14,7 +12,6 @@ import hu.afi.ld32.world.World;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 /**
  * Created by zsomkovacs on 2015.04.18..
@@ -36,7 +33,7 @@ public class MapLoader {
                     if(r < 85){
                         world.map[x][y] = Tile.SAND;
                     } else if (r < 170){
-                        world.map[x][y] = Tile.DIRT;
+                        world.map[x][y] = Tile.ROCK;
                     } else {
                         world.map[x][y] = Tile.GRASS;
                     }
@@ -48,7 +45,7 @@ public class MapLoader {
                 WallEntity wallEntity = new WallEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 4), 1f, 1f);
                 world.handler.addEntity(wallEntity);
                 if (x%2 == 0) {
-                    TreeEntity treeEntity = new TreeEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 5), 1f, 1f);
+                    TreeEntity treeEntity = new TreeEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 5));
                     world.handler.addEntity(treeEntity);
                 } else {
                     StoneEntity stoneEntity = new StoneEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 5), 1f, 1f);

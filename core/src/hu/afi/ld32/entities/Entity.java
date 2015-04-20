@@ -18,11 +18,16 @@ public abstract class Entity {
     protected float bodyWidth;
     protected float bodyHeight;
     protected World world;
+    protected float bodyDiffX;
+    protected float bodyDiffY;
+
 
     public Entity(World world, Vector2 location, float width, float height){
         this.location = location;
         this.width = width;
         this.height = height;
+        this.bodyDiffX = width/2;
+        this.bodyDiffY = height/2;
         this.world = world;
         createBody();
     }
@@ -46,7 +51,7 @@ public abstract class Entity {
     public void setLocation(Vector2 location){
         this.location = location;
         if(body != null){
-            body.setTransform(location.cpy().add(width/2, height/2), body.getAngle());
+            body.setTransform(location.cpy().add(bodyDiffX, bodyDiffY), body.getAngle());
         }
     }
 

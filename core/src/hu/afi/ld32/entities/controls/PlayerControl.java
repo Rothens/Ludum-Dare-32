@@ -25,6 +25,8 @@ public class PlayerControl extends Control{
     @Override
     public boolean tick() {
         if(getControlled() == null) return true;
+        float angle = getAngle(getUnprojected());
+        getControlled().rotation = angle -90;
 
         if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT)){
             getControlled().accelerate(-5,0);
@@ -45,7 +47,7 @@ public class PlayerControl extends Control{
         }
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_2)){
-            float angle = getAngle(getUnprojected());
+
             ParticleEffectPool.PooledEffect effect = TextureHandler.getInstance().breathPool.obtain();
             effect.setPosition(getControlled().getLocation().x + getControlled().getWidth()/2, getControlled().getLocation().y + getControlled().getHeight()/2);
             System.out.println(angle);

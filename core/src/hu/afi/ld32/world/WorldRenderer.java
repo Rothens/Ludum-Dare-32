@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import hu.afi.ld32.entities.Entity;
+import hu.afi.ld32.utils.TextureHandler;
 
 /**
  * Created by Rothens on 2015.04.18..
@@ -16,7 +17,7 @@ import hu.afi.ld32.entities.Entity;
 public class WorldRenderer {
     private World world;
     private OrthographicCamera cam;
-    public static float tileSize = 64f;
+    public static float tileSize = 32f;
     private ShapeRenderer debugRenderer = new ShapeRenderer();
     private SpriteBatch batch;
     private Box2DDebugRenderer physRender = new Box2DDebugRenderer();
@@ -38,7 +39,7 @@ public class WorldRenderer {
     }
 
     public void render(float delta){
-        debugRenderer.setProjectionMatrix(cam.combined);
+        /*debugRenderer.setProjectionMatrix(cam.combined);
         debugRenderer.begin(ShapeRenderer.ShapeType.Filled);
         for(int y = 0; y < world.height; y++){
             for(int x = 0; x < world.width; x++){
@@ -46,7 +47,7 @@ public class WorldRenderer {
                     case GRASS:
                         debugRenderer.setColor(Color.GREEN);
                         break;
-                    case DIRT:
+                    case ROCK:
                         debugRenderer.setColor(Color.MAROON);
                         break;
                     case SAND:
@@ -57,10 +58,18 @@ public class WorldRenderer {
 
             }
         }
-        debugRenderer.end();
+        debugRenderer.end();*/
 
         batch.setProjectionMatrix(cam.combined);
         batch.begin();
+
+        for(int y = 0; y < world.height; y++){
+            for(int x = 0; x < world.width; x++){
+
+                batch.draw(TextureHandler.getInstance().getSprite(world.map[x][y].getTexture()), x, y, 1f, 1f);
+
+            }
+        }
 
         for(int i = world.effects.size -1; i >= 0; i--){
             ParticleEffectPool.PooledEffect effect = world.effects.get(i);
@@ -76,7 +85,7 @@ public class WorldRenderer {
         }
 
         batch.end();
-        //physRender.render(world.getPhys(), cam.combined); //uncomment for phys debug rendering.
+        physRender.render(world.getPhys(), cam.combined); //uncomment for phys debug rendering.
 
     }
 

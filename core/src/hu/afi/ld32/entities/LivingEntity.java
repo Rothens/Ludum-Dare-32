@@ -1,5 +1,6 @@
 package hu.afi.ld32.entities;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import hu.afi.ld32.entities.controls.Control;
 import hu.afi.ld32.world.World;
@@ -11,6 +12,8 @@ public abstract class LivingEntity extends Entity {
     public int health;
     protected Control control;
     protected Vector2 previousLocation;
+    public float rotation = 0f;
+
     public LivingEntity(World world, Vector2 location, float width, float height, int health) {
         super(world, location, width, height);
         this.health = health;
@@ -39,4 +42,6 @@ public abstract class LivingEntity extends Entity {
     public Vector2 getPreviousLocation() {
         return previousLocation;
     }
+
+
 }
