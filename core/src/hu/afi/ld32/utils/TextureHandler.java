@@ -31,10 +31,17 @@ public final class TextureHandler {
 
     private void init(){
         sprites = new HashMap<String, TextureRegion>();
+
         TextureRegion tr = new TextureRegion(new Texture(Gdx.files.internal("player.png")));
         sprites.put("player", tr);
         ParticleEffect dome = new ParticleEffect();
         ParticleEffect breath = new ParticleEffect();
+        tr = new TextureRegion(new Texture(Gdx.files.internal("textures/wall.png")));
+        sprites.put("entity_wall", tr);
+        tr = new TextureRegion(new Texture(Gdx.files.internal("textures/tree.png")));
+        sprites.put("entity_tree", tr);
+        tr = new TextureRegion(new Texture(Gdx.files.internal("textures/stone.png")));
+        sprites.put("entity_stone", tr);
 
         dome.load(Gdx.files.internal("particlez/lightningdome.p"), Gdx.files.internal(""));
         dome.scaleEffect(0.03f);
