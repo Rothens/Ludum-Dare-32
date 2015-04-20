@@ -16,6 +16,7 @@ import hu.afi.ld32.world.World;
  */
 public class Fireball extends SpellEntity {
     private ParticleEffectPool.PooledEffect effect;
+    private float life = 20f;
 
     public Fireball(World world, Vector2 location) {
         super(world, location, .5f, .5f);
@@ -67,7 +68,13 @@ public class Fireball extends SpellEntity {
     @Override
     public boolean tick(float delta) {
         super.tick(delta);
+        life-=delta;
         effect.setPosition(getLocation().x, getLocation().y);
+        if(life <= 0){
+            getWorld().getPhys().destroyBody(getBody());
+            effect.allowCompletion();
+            return false;
+        }
         return true;
     }
 

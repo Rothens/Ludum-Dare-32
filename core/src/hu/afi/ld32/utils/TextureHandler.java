@@ -70,14 +70,10 @@ public final class TextureHandler {
         ParticleEffect dome = new ParticleEffect();
         ParticleEffect breath = new ParticleEffect();
         ParticleEffect bolt = new ParticleEffect();
-        tr = new TextureRegion(new Texture(Gdx.files.internal("textures/wall.png")));
-        sprites.put("entity_wall", tr);
-        tr = new TextureRegion(new Texture(Gdx.files.internal("textures/tree.png")));
-        sprites.put("entity_tree", tr);
-        tr = new TextureRegion(new Texture(Gdx.files.internal("textures/stone.png")));
-        sprites.put("entity_stone", tr);
-        tr = new TextureRegion(new Texture(Gdx.files.internal("textures/AR.png")));
-        sprites.put("entity_ar", tr);
+        sprites.put("entity_wall", charAtlas.findRegion("wall"));
+        sprites.put("entity_tree", charAtlas.findRegion("tree"));
+        sprites.put("entity_stone", charAtlas.findRegion("stone"));
+        sprites.put("entity_ar", charAtlas.findRegion("AR"));
         tr = new TextureRegion(new Texture(Gdx.files.internal("textures/fireball.png")));
         sprites.put("entity_fireball", tr);
 
