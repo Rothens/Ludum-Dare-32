@@ -30,13 +30,10 @@ public class Player extends LivingEntity{
         body = getWorld().getPhys().createBody(bd);
         body.setFixedRotation(true);
         CircleShape ps = new CircleShape();
-        //ps.setAsBox(getWidth()/2f, getHeight()/2f);
         ps.setRadius(bodyWidth/2f);
         Fixture f = body.createFixture(ps, 1f);
-        Filter filt = new Filter();
-        filt.categoryBits = (short)1;
-        filt.maskBits = (short)~1;
-        f.setFilterData(filt);
+        f.setDensity(1);
+        f.setRestitution(0);
         body.setLinearDamping(2f);
     }
 

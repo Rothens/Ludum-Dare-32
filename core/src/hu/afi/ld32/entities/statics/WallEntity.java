@@ -33,12 +33,10 @@ public class WallEntity extends StaticEntity {
         body.setBullet(true);
 
         PolygonShape ps = new PolygonShape();
-        ps.setAsBox(bodyWidth, bodyHeight/2);
+        ps.setAsBox(bodyWidth / 2, bodyHeight / 2);
         Fixture f = body.createFixture(ps, 1f);
-        Filter filt = new Filter();
-        filt.categoryBits = (short)1;
-        filt.maskBits = (short)~1;
-        f.setFilterData(filt);
+        f.setDensity(1);
+        f.setRestitution(0);
     }
 
     public TextureRegion getTexture() {
