@@ -34,19 +34,19 @@ public class PlayerControl extends Control{
         if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT)){
             sixPress = 0;
             sixPress = 0;
-            getControlled().accelerate(-5,0);
+            getControlled().accelerateRight(-5);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT)){
             sixPress = 0;
-            getControlled().accelerate(5,0);
+            getControlled().accelerateRight(5);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.DPAD_UP)){
             sixPress = 0;
-            getControlled().accelerate(0,5);
+            getControlled().accelerateForward(5);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN)){
             sixPress = 0;
-            getControlled().accelerate(0,-5);
+            getControlled().accelerateForward(-5);
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)){
             sixPress = 0;
@@ -72,7 +72,10 @@ public class PlayerControl extends Control{
             effect.setPosition(getControlled().getLocation().x + getControlled().getWidth()/2, getControlled().getLocation().y + getControlled().getHeight()/2);
             //getControlled().getWorld().effects.add(effect);
 
-            Fireball fb = new Fireball(getControlled().getWorld(), getControlled().getBody().getPosition());
+            Vector2 pos = new Vector2(getControlled().getBody().getPosition());
+            float ang = (angle/360.f*2*3.1415927f);
+            pos.add((float) Math.cos(ang) * 1.5f, (float) Math.sin(ang) * 1.5f);
+            Fireball fb = new Fireball(getControlled().getWorld(), pos);
             fb.setDirection(angle);
             getControlled().getWorld().handler.addEntity(fb);
         }

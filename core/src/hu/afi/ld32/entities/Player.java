@@ -51,7 +51,22 @@ public class Player extends LivingEntity{
         lastMove = 0f;
         body.applyLinearImpulse(new Vector2(x,y), body.getPosition(), true);
         body.setLinearVelocity(body.getLinearVelocity().limit(maxSpeed));
+    }
 
+    @Override
+    public void accelerateForward(float acc) {
+        float rr = this.rotation/360.0f*2.0f*3.1415927f;
+        float x = acc * -(float)Math.sin(rr);
+        float y = acc * (float)Math.cos(rr);
+        this.accelerate(x, y);
+    }
+
+    @Override
+    public void accelerateRight(float acc) {
+        float rr = this.rotation/360.0f*2.0f*3.1415927f;
+        float x = acc * (float)Math.cos(rr);
+        float y = acc * (float)Math.sin(rr);
+        this.accelerate(x, y);
     }
 
     @Override

@@ -40,6 +40,8 @@ public abstract class DynamicEntity extends Entity {
     }
 
     public abstract void accelerate(float x, float y);
+    public abstract void accelerateForward(float acc);
+    public abstract void accelerateRight(float acc);
 
     public Vector2 getPreviousLocation() {
         return previousLocation;

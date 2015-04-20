@@ -55,6 +55,16 @@ public class Fireball extends SpellEntity {
     }
 
     @Override
+    public void accelerateForward(float acc) {
+
+    }
+
+    @Override
+    public void accelerateRight(float acc) {
+
+    }
+
+    @Override
     public boolean tick(float delta) {
         super.tick(delta);
         effect.setPosition(getLocation().x, getLocation().y);
