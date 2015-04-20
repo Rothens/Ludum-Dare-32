@@ -17,7 +17,6 @@ public class Player extends LivingEntity{
     float moveTime = 0f;
     public Player(World world, Vector2 location, int health) {
         super(world, location, 2f, 2f, health);
-
     }
 
     @Override
@@ -44,6 +43,7 @@ public class Player extends LivingEntity{
         f.setDensity(1);
         f.setRestitution(0);
         body.setLinearDamping(2f);
+        this.type = "PLAYER";
     }
 
     @Override

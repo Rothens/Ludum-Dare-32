@@ -21,6 +21,7 @@ public abstract class Entity {
     protected float bodyDiffX;
     protected float bodyDiffY;
 
+    protected String type;
 
     public Entity(World world, Vector2 location, float width, float height){
         this.location = location;
@@ -30,6 +31,7 @@ public abstract class Entity {
         this.bodyDiffY = height/2;
         this.world = world;
         createBody();
+        this.body.getFixtureList().get(0).setUserData(this);
     }
 
     public World getWorld() {
@@ -38,6 +40,10 @@ public abstract class Entity {
 
     protected void createBody(){
 
+    }
+
+    public String getType() {
+        return type;
     }
 
     /**

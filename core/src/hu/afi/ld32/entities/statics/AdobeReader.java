@@ -17,6 +17,7 @@ public class AdobeReader extends StaticEntity {
 
     public AdobeReader(World world, Vector2 location, float width, float height) {
         super(world, location, width, height);
+        this.type = "AR";
     }
 
     @Override
