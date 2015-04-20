@@ -18,6 +18,7 @@ public final class TextureHandler {
     private HashMap<String, TextureRegion> sprites;
 
     public ParticleEffectPool domePool;
+    public ParticleEffectPool breathPool;
 
     public static TextureHandler getInstance(){
         if(instance == null) instance = new TextureHandler();
@@ -33,10 +34,15 @@ public final class TextureHandler {
         TextureRegion tr = new TextureRegion(new Texture(Gdx.files.internal("player.png")));
         sprites.put("player", tr);
         ParticleEffect dome = new ParticleEffect();
+        ParticleEffect breath = new ParticleEffect();
 
         dome.load(Gdx.files.internal("particlez/lightningdome.p"), Gdx.files.internal(""));
         dome.scaleEffect(0.03f);
-        domePool = new ParticleEffectPool(dome, 1, 3);
+        domePool = new ParticleEffectPool(dome, 1, 10);
+
+        breath.load(Gdx.files.internal("particlez/icebreath.p"), Gdx.files.internal(""));
+        breath.scaleEffect(0.03f);
+        breathPool = new ParticleEffectPool(breath, 1, 10);
     }
 
     public TextureRegion getSprite(String name){

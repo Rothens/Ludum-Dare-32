@@ -3,6 +3,8 @@ package hu.afi.ld32.entities.controls;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
+import com.badlogic.gdx.graphics.g3d.particles.emitters.Emitter;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import hu.afi.ld32.utils.TextureHandler;
@@ -37,9 +39,19 @@ public class PlayerControl extends Control{
             getControlled().accelerate(0,-5);
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)){
-            System.out.println("1");
             ParticleEffectPool.PooledEffect effect = TextureHandler.getInstance().domePool.obtain();
             effect.setPosition(getControlled().getLocation().x + getControlled().getWidth()/2, getControlled().getLocation().y + getControlled().getHeight()/2);
+            getControlled().getWorld().effects.add(effect);
+        }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_2)){
+            float angle = getAngle(getUnprojected());
+            ParticleEffectPool.PooledEffect effect = TextureHandler.getInstance().breathPool.obtain();
+            effect.setPosition(getControlled().getLocation().x + getControlled().getWidth()/2, getControlled().getLocation().y + getControlled().getHeight()/2);
+            System.out.println(angle);
+            for( ParticleEmitter e : effect.getEmitters()){
+
+            }
             getControlled().getWorld().effects.add(effect);
         }
 
@@ -68,6 +80,10 @@ public class PlayerControl extends Control{
 
     private Vector3 getUnprojected(){
         return worldRenderer.getCam().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
+    }
+
+    public float getAngle(Vector3 target) {
+        return MathUtils.radiansToDegrees * MathUtils.atan2( target.y - (getControlled().getLocation().y + getControlled().getHeight()/2f), target.x - (getControlled().getLocation().x + getControlled().getWidth()/2f));
     }
 
 
