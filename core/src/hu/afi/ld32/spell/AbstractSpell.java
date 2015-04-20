@@ -5,13 +5,9 @@ import java.util.Random;
 /**
  * Created by zsomkovacs on 2015.04.18..
  */
-public abstract class AbstractSpell {
+public class AbstractSpell {
     public enum SpellElement {FIRE, COLD, LIGHTNING}
     public enum SpellType {PROJECTILE, CONE, NOVA, SPECIAL}
-
-    protected String displayedName;
-
-    public double[] failRate = new double[10];
 
     public String getDisplayedName() {
         return displayedName;
@@ -33,7 +29,7 @@ public abstract class AbstractSpell {
         return stunDuration[level];
     }
 
-    public int getSlowRate() {
+    public double getSlowRate() {
         return slowRate[level];
     }
 
@@ -42,26 +38,34 @@ public abstract class AbstractSpell {
     }
 
     public double getBurnRate() {
-        return burnRate[level];
+        return burnRate;
     }
+
+    public double getSwayDirection() {
+        return swayDirection;
+    }
+
+
+    protected String displayedName;
+    protected double[] failRate = new double[10];
 
     protected int[] damage = new int[10];
     protected int[] cost = new int[10];
     // TODO: range és irányultság is a particle-höz tartozik, viszont a fail-tõl függ, valahogy össze kell egyeztetni.
-    protected double[] range = new double[10];
-    protected int[] slowRate = new int[10];
-    protected double[] slowDuration = new double[10];
-    protected double[] burnRate = new double[10];
-    protected double[] stunDuration = new double[10];
+    protected double[] range = new double[10]; // méterben. célszerû valahogy átkonvertálni még...
+    protected double[] slowRate = new double[10];
+    protected double[] slowDuration = new double[10]; // másodpercben.
+    protected double burnRate = 0; // sebzésének mekkora részét rakja még rá burn-ben
+    protected double[] stunDuration = new double[10]; // másodpercben.
 
     protected SpellElement element;
     protected SpellType type;
-    protected int level = 1;
-    protected boolean canLevel = true;
-    protected double swayDirection = 0;
+    protected int level = 1; // level of the spell.
+    protected boolean canLevel = true; // is it a 10-leveled spell, or not.
+    protected double swayDirection = 0; // projetile-hoz; szögben megadva az eltérés mértéke.
 
     public AbstractSpell(String displayedName, double[] failRate, int[] damage, int[] cost, double[] range,
-                         int[] slowRate, double[] slowDuration, double[] burnRate, double[] stunDuration,
+                         double[] slowRate, double[] slowDuration, double burnRate, double[] stunDuration,
                          SpellElement element, SpellType type, boolean canLevel) {
         this.displayedName = displayedName;
         this.failRate = failRate;
@@ -77,14 +81,11 @@ public abstract class AbstractSpell {
         this.canLevel = canLevel;
     }
 
-    public double getSwayDirection() {
-        return swayDirection;
-    }
 
     protected void fail() {
         Random rand = new Random();
         double failExtent = rand.nextDouble()/2 + 0.25f;
-        burnRate[level] = 0;
+        burnRate = 0;
         if (type == SpellType.PROJECTILE) {
             swayDirection = rand.nextDouble()/10*4 - 20f;
         }
