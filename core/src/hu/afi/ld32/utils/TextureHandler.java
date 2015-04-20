@@ -17,6 +17,7 @@ public final class TextureHandler {
     private static TextureHandler instance;
     private TextureAtlas tileAtlas;
     private TextureAtlas charAtlas;
+    private TextureAtlas menuAtlas;
     private HashMap<String, TextureRegion> sprites;
     private Array<TextureAtlas.AtlasRegion> main;
     private Array<TextureAtlas.AtlasRegion> ee;
@@ -41,16 +42,26 @@ public final class TextureHandler {
     private void init(){
         tileAtlas = new TextureAtlas(Gdx.files.internal("textures/tiles.atlas"));
         charAtlas = new TextureAtlas(Gdx.files.internal("textures/chars.atlas"));
+        menuAtlas = new TextureAtlas(Gdx.files.internal("textures/menu.atlas"));
         sprites = new HashMap<String, TextureRegion>();
 
-        TextureRegion tr = new TextureRegion(new Texture(Gdx.files.internal("player.png")));
-        sprites.put("player", tr);
+        TextureRegion tr;
+
         sprites.put("bushes", tileAtlas.findRegion("bushes"));
         sprites.put("grass", tileAtlas.findRegion("grass"));
         sprites.put("road", tileAtlas.findRegion("road"));
         sprites.put("rock", tileAtlas.findRegion("rock"));
         sprites.put("sand", tileAtlas.findRegion("sand"));
         sprites.put("wood", tileAtlas.findRegion("wood"));
+        sprites.put("water1", tileAtlas.findRegion("water1"));
+        sprites.put("water2", tileAtlas.findRegion("water2"));
+
+        sprites.put("button1", tileAtlas.findRegion("button1"));
+        sprites.put("button2", tileAtlas.findRegion("button2"));
+        sprites.put("button3", tileAtlas.findRegion("button3"));
+        sprites.put("bg", tileAtlas.findRegion("menu_background"));
+
+
 
         main = charAtlas.findRegions("main");
         ee = charAtlas.findRegions("ee");

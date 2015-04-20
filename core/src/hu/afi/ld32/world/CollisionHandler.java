@@ -25,9 +25,12 @@ public class CollisionHandler implements ContactListener {
 
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {
+
         Entity e1 = (Entity) contact.getFixtureA().getUserData();
         Entity e2 = (Entity) contact.getFixtureB().getUserData();
+        if(e1 != null)
         System.out.println(e1.getType());
+        if(e2 != null)
         System.out.println(e2.getType());
     }
 
