@@ -56,10 +56,10 @@ public final class TextureHandler {
         sprites.put("water1", tileAtlas.findRegion("water1"));
         sprites.put("water2", tileAtlas.findRegion("water2"));
 
-        sprites.put("button1", tileAtlas.findRegion("button1"));
-        sprites.put("button2", tileAtlas.findRegion("button2"));
-        sprites.put("button3", tileAtlas.findRegion("button3"));
-        sprites.put("bg", tileAtlas.findRegion("menu_background"));
+        sprites.put("button1", menuAtlas.findRegion("button1"));
+        sprites.put("button2", menuAtlas.findRegion("button2"));
+        sprites.put("button3", menuAtlas.findRegion("button3"));
+        sprites.put("bg", menuAtlas.findRegion("menu_background"));
 
 
 
