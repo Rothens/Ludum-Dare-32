@@ -46,6 +46,7 @@ public class World {
         addEdgeShape(width,0,width, height);
         addEdgeShape(0,height,width,height);
 
+        phys.setContactListener(new CollisionHandler());
     }
 
     void addEdgeShape(float x1, float y1, float x2, float y2){

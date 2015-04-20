@@ -15,6 +15,7 @@ import hu.afi.ld32.world.World;
 public class StoneEntity extends StaticEntity {
     public StoneEntity(World world, Vector2 location, float width, float height) {
         super(world, location, width, height);
+        this.type = "STONE";
     }
 
     @Override

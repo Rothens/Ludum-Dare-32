@@ -24,6 +24,7 @@ public class Fireball extends LivingEntity {
         effect = TextureHandler.getInstance().boltPool.obtain();
         effect.setPosition(getLocation().x + getWidth()/2, getLocation().y + getHeight()/2);
         getWorld().effects.add(effect);
+        this.type = "FIREBALL";
     }
 
     public void setDirection(float dir){

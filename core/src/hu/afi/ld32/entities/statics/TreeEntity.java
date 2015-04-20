@@ -15,6 +15,7 @@ import hu.afi.ld32.world.World;
 public class TreeEntity extends StaticEntity {
     public TreeEntity(World world, Vector2 location) {
         super(world, location, 2f,2f);
+        this.type = "TREE";
     }
 
     @Override
