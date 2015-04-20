@@ -14,14 +14,14 @@ import hu.afi.ld32.world.World;
  */
 public class TreeEntity extends StaticEntity {
     public TreeEntity(World world, Vector2 location) {
-        super(world, location, 2f,2f);
+        super(world, location, 2f, 2f);
         this.type = "TREE";
     }
 
     @Override
     protected void createBody() {
-        bodyWidth = 1f;
-        bodyHeight = 1f;
+        bodyWidth = 2f;
+        bodyHeight = 2f;
         BodyDef bd = new BodyDef();
         bd.type = BodyDef.BodyType.StaticBody;
         bd.position.set(getLocation().cpy().add(bodyDiffX, bodyDiffY));
@@ -29,8 +29,18 @@ public class TreeEntity extends StaticEntity {
         body.setFixedRotation(true);
         body.setBullet(true);
 
+        Vector2[] vertices = {
+                new Vector2(0.0f, 1.0f),
+                new Vector2(-0.3f, 0.75f),
+                new Vector2(-0.7f, -0.65f),
+                new Vector2(0.0f, -1.0f),
+                new Vector2(0.7f, -0.65f),
+                new Vector2(0.3f, 0.75f)
+        };
+
         PolygonShape ps = new PolygonShape();
-        ps.setAsBox(bodyWidth/2, bodyHeight/2);
+        //ps.setAsBox(bodyWidth/2, bodyHeight/2);
+        ps.set(vertices);
         Fixture f = body.createFixture(ps, 1f);
         f.setDensity(1);
         f.setRestitution(0);

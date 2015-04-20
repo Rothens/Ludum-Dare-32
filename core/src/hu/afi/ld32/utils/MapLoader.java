@@ -41,14 +41,16 @@ public class MapLoader {
             }
             world.regenPhys();
 
+            float delta = 3;
             for (int x=0; x<11; x++) {
                 WallEntity wallEntity = new WallEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 4), 1f, 1f);
                 world.handler.addEntity(wallEntity);
                 if (x%2 == 0) {
-                    TreeEntity treeEntity = new TreeEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 5));
+                    TreeEntity treeEntity = new TreeEntity(world, new Vector2(world.width/2f - x + 4 + delta, world.height/2f + 5));
+                    delta--;
                     world.handler.addEntity(treeEntity);
                 } else {
-                    StoneEntity stoneEntity = new StoneEntity(world, new Vector2(world.width/2f - x + 5, world.height/2f + 5), 1f, 1f);
+                    StoneEntity stoneEntity = new StoneEntity(world, new Vector2(world.width/2f - x + 5 + delta, world.height/2f + 5), 1f, 1f);
                     world.handler.addEntity(stoneEntity);
                 }
             }

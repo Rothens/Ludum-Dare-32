@@ -29,14 +29,14 @@ public class Player extends LivingEntity{
         body.setFixedRotation(true);
         PolygonShape ps = new PolygonShape();
         Vector2[] vertices = {
-                new Vector2(-0.5f, -0.5f),
-                new Vector2(-0.55f, 0.5f),
-                new Vector2(-0.2f, 1.35f),
-                new Vector2(-0.15f, 1.35f),
-                new Vector2(0.15f, 1.35f),
-                new Vector2(0.2f, 1.35f),
+                new Vector2(0.5f, -0.5f),
                 new Vector2(0.55f, 0.5f),
-                new Vector2(0.5f, -0.5f)
+                new Vector2(0.2f, 1.35f),
+                new Vector2(0.15f, 1.35f),
+                new Vector2(-0.15f, 1.35f),
+                new Vector2(-0.2f, 1.35f),
+                new Vector2(-0.55f, 0.5f),
+                new Vector2(-0.5f, -0.5f)
         };
         ps.set(vertices);
         Fixture f = body.createFixture(ps, 1f);
