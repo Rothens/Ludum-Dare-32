@@ -79,13 +79,23 @@ public class MenuScreen implements Screen {
         // Create a button with the "default" TextButtonStyle. A 3rd parameter can be used to specify a name other than "default".
         Image backGround = new Image(TextureHandler.getInstance().getSprite("bg"));
         final TextButton playButton=new TextButton("PLAY",textButtonStyle);
+        final TextButton playButton2=new TextButton("PLAY",textButtonStyle);
+        final TextButton playButton3=new TextButton("PLAY",textButtonStyle);
+        final TextButton playButton4=new TextButton("PLAY",textButtonStyle);
         final TextButton settingsButton=new TextButton("SETTINGS",textButtonStyle);
-        playButton.setPosition(200, 200);
+        playButton.setPosition(100, 200);
         settingsButton.setPosition(400, 200);
      //   stage.addActor(backGround);
-        stage.addActor(playButton);
-        stage.addActor(settingsButton);
 
+    //    stage.addActor(settingsButton);
+
+        stage.addActor(playButton);
+        playButton2.setPosition(100, 300);
+        stage.addActor(playButton2);
+        playButton3.setPosition(100, 400);
+        stage.addActor(playButton3);
+        playButton4.setPosition(100, 100);
+        stage.addActor(playButton4);
 
         playButton.addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
@@ -95,6 +105,35 @@ public class MenuScreen implements Screen {
 
             }
         });
+
+        playButton2.addListener(new ChangeListener() {
+            public void changed(ChangeEvent event, Actor actor) {
+                //System.out.println("Clicked! Is checked: " + button.isChecked());
+                LD32Game.instance.setScreen(new GameScreen());
+                //    g.setScreen( new GameScreen());
+
+            }
+        });
+
+        playButton3.addListener(new ChangeListener() {
+            public void changed(ChangeEvent event, Actor actor) {
+                //System.out.println("Clicked! Is checked: " + button.isChecked());
+                LD32Game.instance.setScreen(new GameScreen());
+                //    g.setScreen( new GameScreen());
+
+            }
+        });
+
+        playButton4.addListener(new ChangeListener() {
+            public void changed(ChangeEvent event, Actor actor) {
+                //System.out.println("Clicked! Is checked: " + button.isChecked());
+                LD32Game.instance.setScreen(new GameScreen());
+                //    g.setScreen( new GameScreen());
+
+            }
+        });
+
+
 
         settingsButton.addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
